@@ -1,0 +1,6 @@
+[book]
+title = "Cyclone Getting Started"
+author = "ADLINK"
+
+[output.html]
+git-repository-url = "https://github.com/YixianLv/CycloneDocs/src"
