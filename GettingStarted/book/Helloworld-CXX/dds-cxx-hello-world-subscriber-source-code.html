@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DDS-CXX Hello World Subscriber Source Code - Cyclone Getting Started</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
+
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li class="affix"><a href="./index.html">Introduction</a></li><li><a href="InstallCycloneDDS/index.html"><strong>1.</strong> Installing Eclipse Cyclone DDS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/system-requirements.html"><strong>1.1.</strong> System requirements</a></li><li><a href="InstallCycloneDDS/native-installation-for-linux-and-macos.html"><strong>1.2.</strong> Native Installation for Linux and macOS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/for-application-developers.html"><strong>1.2.1.</strong> For Application Developers</a></li></ul></li><li><a href="InstallCycloneDDS/installation-with-product-installer-for-linux-and-macos.html"><strong>1.3.</strong> Installation with product installer for Linux and macOS</a></li><li><a href="InstallCycloneDDS/native-installation-for-windows.html"><strong>1.4.</strong> Native Installation for Windows</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/for-application-developers-windows.html"><strong>1.4.1.</strong> For Application Developers</a></li></ul></li><li><a href="InstallCycloneDDS/installation-with-product-installer-for-windows.html"><strong>1.5.</strong> Installation with product installer for Windows</a></li><li><a href="InstallCycloneDDS/test-your-installation.html"><strong>1.6.</strong> Test your Installation</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/environnement-variable-updates.html"><strong>1.6.1.</strong> Environnement variable updates</a></li><li><a href="InstallCycloneDDS/running-the-pre-built-example.html"><strong>1.6.2.</strong> Running the pre-built example</a></li></ul></li><li><a href="InstallCycloneDDS/you-want-to-know-more-about-dds.html"><strong>1.7.</strong> You want to know more about DDS?</a></li><li><a href="InstallCycloneDDS/uninstalling-cyclone-dds.html"><strong>1.8.</strong> Uninstalling Cyclone DDS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/uninstallation-for-native-installation.html"><strong>1.8.1.</strong> Uninstallation for Native Installation.md</a></li><li><a href="InstallCycloneDDS/uninstallation-for-the-product-installer.html"><strong>1.8.2.</strong> Uninstallation for the product installer</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/uninstallation-windows.html"><strong>1.8.2.1.</strong> Windows</a></li><li><a href="InstallCycloneDDS/uninstallation-linux-and-macos.html"><strong>1.8.2.2.</strong> Linux and macOS</a></li></ul></li></ul></li></ul></li><li><a href="Build-app/index.html"><strong>2.</strong> Building Cyclone DDS applications</a></li><li><ul class="section"><li><a href="Build-app/building-your-first-example.html"><strong>2.1.</strong> Building Your First Example</a></li><li><a href="Build-app/building-the-helloworld-application-with-cmake.html"><strong>2.2.</strong> Building the HelloWorld! application with CMake</a></li><li><ul class="section"><li><a href="Build-app/building-the-hello-world-example.html"><strong>2.2.1.</strong> Building the Hello World!Example</a></li><li><ul class="section"><li><a href="Build-app/on-linux.html"><strong>2.2.1.1.</strong> on Linux</a></li><li><a href="Build-app/on-windows.html"><strong>2.2.1.2.</strong> on Windows</a></li></ul></li></ul></li></ul></li><li><a href="Helloworld/index.html"><strong>3.</strong> Hello World!, Code anatomy</a></li><li><ul class="section"><li><a href="Helloworld/data-centric-architecture.html"><strong>3.1.</strong> Data-Centric Architecture</a></li><li><a href="Helloworld/keys-steps-to-build-the-hello-world-application.html"><strong>3.2.</strong> Keys steps to build the Hello World! application</a></li><li><ul class="section"><li><a href="Helloworld/hello-world-idl.html"><strong>3.2.1.</strong> Hello World! IDL</a></li><li><a href="Helloworld/the-idl-compiler-generated-files.html"><strong>3.2.2.</strong> The IDL compiler generated files</a></li></ul></li><li><a href="Helloworld/the-hello-world-business-logic.html"><strong>3.3.</strong> The Hello World! Business Logic</a></li><li><ul class="section"><li><a href="Helloworld/hello-world-subscriber-source-code.html"><strong>3.3.1.</strong> Hello World! Subscriber Source Code</a></li><li><a href="Helloworld/hello-world-publisher-source-code.html"><strong>3.3.2.</strong> Hello World! Publisher Source Code</a></li></ul></li></ul></li><li><a href="Benchmarking/index.html"><strong>4.</strong> Benchmarking Tools for Cyclone</a></li><li><ul class="section"><li><a href="Benchmarking/introduction.html"><strong>4.1.</strong> Introduction</a></li><li><a href="Benchmarking/testing-your-network-configuration.html"><strong>4.2.</strong> Testing your network configuration</a></li><li><a href="Benchmarking/measuring-latency.html"><strong>4.3.</strong> Measuring Latency</a></li><li><a href="Benchmarking/measuring-throughput.html"><strong>4.4.</strong> Measuring Throughput</a></li><li><a href="Benchmarking/measuring-throughput-and-latency-in-a-mixed-scenario.html"><strong>4.5.</strong> Measuring Throughput and Latency in a mixed scenario</a></li><li><a href="Benchmarking/additional-options.html"><strong>4.6.</strong> Additional options</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/index.html"><strong>5.</strong> Installing Eclipse Cyclone DDS – CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/system-requirements.html"><strong>5.1.</strong> System requirements</a></li><li><a href="InstallCycloneDDS-CXX/native-installation-for-linux-and-macos.html"><strong>5.2.</strong> Native Installation for Linux and macOS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/install-idlcxx-compiler.html"><strong>5.2.1.</strong> Install CXX IDL compiler</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-idlcxx.html"><strong>5.2.1.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/packaging.html"><strong>5.2.1.2.</strong> Packaging</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/install-eclipse-cyclone-dds-cxx.html"><strong>5.2.2.</strong> Install Eclipse Cyclone DDS CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-cxx.html"><strong>5.2.2.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/for-application-developers.html"><strong>5.2.2.2.</strong> For Application Developers</a></li></ul></li></ul></li><li><a href="InstallCycloneDDS-CXX/installation-with-product-installer-for-linux-and-macos.html"><strong>5.3.</strong> Installation with product installer for Linux and macOS</a></li><li><a href="InstallCycloneDDS-CXX/native-installation-for-windows.html"><strong>5.4.</strong> Native Installation for Windows</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/install-idlcxx-compiler-windows.html"><strong>5.4.1.</strong> Install CXX IDL compiler</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-idlcxx-windows.html"><strong>5.4.1.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/packaging-windows.html"><strong>5.4.1.2.</strong> Packaging</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/install-eclipse-cyclone-dds-cxx-windows.html"><strong>5.4.2.</strong> Install Eclipse Cyclone DDS CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-cxx-windows.html"><strong>5.4.2.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/for-application-developers-windows.html"><strong>5.4.2.2.</strong> For Application Developers</a></li></ul></li></ul></li><li><a href="InstallCycloneDDS-CXX/installation-with-product-installer-for-windows.html"><strong>5.5.</strong> Installation with product installer for Windows</a></li><li><a href="InstallCycloneDDS-CXX/test-your-cxx-installation-for-native-installation.html"><strong>5.6.</strong> Test your CXX Installation for Native Installation</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/environnement-variable-updates.html"><strong>5.6.1.</strong> Environnement variable updates</a></li><li><a href="InstallCycloneDDS-CXX/running-the-pre-built-example.html"><strong>5.6.2.</strong> Running the pre-built example</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/uninstalling-cyclone-dds-cxx.html"><strong>5.7.</strong> Uninstalling Cyclone DDS-CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/uninstallation-for-native-installation.html"><strong>5.7.1.</strong> Uninstallation for Native Installation</a></li><li><a href="InstallCycloneDDS-CXX/uninstallation-for-the-product-installer.html"><strong>5.7.2.</strong> Uninstallation for the product installer</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/uninstallation-windows.html"><strong>5.7.2.1.</strong> Windows</a></li><li><a href="InstallCycloneDDS-CXX/uninstallation-linux-and-macos.html"><strong>5.7.2.2.</strong> Linux and macOS</a></li></ul></li></ul></li></ul></li><li><a href="Build-cxx-app/index.html"><strong>6.</strong> Building Eclipse Cyclone DDS-CXX applications</a></li><li><ul class="section"><li><a href="Build-cxx-app/building-your-first-cyclonedds-cxx-example.html"><strong>6.1.</strong> Building Your First CycloneDDS-CXX example</a></li><li><ul class="section"><li><a href="Build-cxx-app/building-a-cyclonedds-cxx-application-with-cmake.html"><strong>6.1.1.</strong> Building a CycloneDDS-CXX application with CMake</a></li><li><a href="Build-cxx-app/build-the-dds-cxx-hello-world-example.html"><strong>6.1.2.</strong> Build the DDS-CXX Hello World Example</a></li><li><ul class="section"><li><a href="Build-cxx-app/building-the-dds-cxx-hello-world-example-on-linux-and-macos.html"><strong>6.1.2.1.</strong> Building the DDS-CXX Hello World example on Linux and macOS</a></li><li><a href="Build-cxx-app/building-the-dds-cxx-hello-world-example-on-windows.html"><strong>6.1.2.2.</strong> Building the DDS-CXX Hello World example on Windows</a></li></ul></li></ul></li></ul></li><li><a href="Helloworld-CXX/index.html"><strong>7.</strong> DDS-CXX Hello World Code anatomy</a></li><li><ul class="section"><li><a href="Helloworld-CXX/keys-steps-to-build-the-hello-world-application.html"><strong>7.1.</strong> Keys steps to build the Hello World! application</a></li><li><ul class="section"><li><a href="Helloworld-CXX/helloworld-idl.html"><strong>7.1.1.</strong> HelloWorld IDL</a></li><li><a href="Helloworld-CXX/the-idl-compiler-generated-files.html"><strong>7.1.2.</strong> The IDL compiler generated files</a></li></ul></li><li><a href="Helloworld-CXX/dds-cxx-hello-world-business-logic.html"><strong>7.2.</strong> DDS-CXX Hello World Business Logic</a></li><li><ul class="section"><li><a href="Helloworld-CXX/dds-cxx-hello-world-subscriber-source-code.html" class="active"><strong>7.2.1.</strong> DDS-CXX Hello World Subscriber Source Code</a></li><li><a href="Helloworld-CXX/dds-cxx-hello-world-publisher-source-code.html"><strong>7.2.2.</strong> DDS-CXX Hello World Publisher Source Code</a></li></ul></li></ul></li><li><a href="Appendix/CycloneDDS-contribute/index.html"><strong>8.</strong> Appendix I Contributing to Eclipse Cyclone DDS</a></li><li><ul class="section"><li><a href="Appendix/CycloneDDS-contribute/linux-and-macos.html"><strong>8.1.</strong> Linux and macOS</a></li><li><a href="Appendix/CycloneDDS-contribute/windows.html"><strong>8.2.</strong> Windows</a></li></ul></li><li><a href="Appendix/CycloneDDS-CXX-contribute/index.html"><strong>9.</strong> Appendix II Contributing to Eclipse Cyclone DDS-CXX</a></li><li><ul class="section"><li><a href="Appendix/CycloneDDS-CXX-contribute/linux-and-macos.html"><strong>9.1.</strong> Linux and macOS</a></li><li><a href="Appendix/CycloneDDS-CXX-contribute/windows.html"><strong>9.2.</strong> Windows</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page" tabindex="-1">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars" title="Toggle sidebar"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush" title="Change theme"></i>
+                    </div>
+
+                    <h1 class="menu-title">Cyclone Getting Started</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="Helloworld-CXX/dds-cxx-hello-world-subscriber-source-code.html#dds-cxx-hello-world-subscriber-source-code" id="dds-cxx-hello-world-subscriber-source-code"><h2>DDS-CXX <em>Hello World</em> Subscriber Source Code</h2></a>
+<p>The Subscriber.cpp file mainly contains the statements to wait for a <em>Hello World</em> message and reads it when it receives it.</p>
+<p>Note that, the read sematic keeps the data sample in the Data Reader cache. Subscriber application basically implements the steps defined in <a href="Helloworld-CXX/keys-steps-to-build-the-hello-world-application.html">section 7.1.</a></p>
+<pre><code>#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+#include &lt;chrono&gt;
+#include &lt;thread&gt;
+
+/* Include the C++ DDS API. */
+#include &quot;dds/dds.hpp&quot;
+
+/* Include data type and specific traits to be used with the C++ DDS API. */
+#include &quot;HelloWorldData_DCPS.hpp&quot;
+
+using namespace org::eclipse::cyclonedds;
+
+int main() {
+    try {
+        std::cout &lt;&lt; &quot;=== [Subscriber] Create reader.&quot; &lt;&lt; std::endl;
+
+        /* First, a domain participant is needed.
+         * Create one on the default domain. */
+        dds::domain::DomainParticipant participant(domain::default_id());
+
+        /* To subscribe to something, a topic is needed. */
+        dds::topic::Topic&lt;HelloWorldData::Msg&gt; topic(participant, &quot;ddscxx_helloworld_example&quot;);
+
+        /* A reader also needs a subscriber. */
+        dds::sub::Subscriber subscriber(participant);
+
+        /* Now, the reader can be created to subscribe to a HelloWorld message. */
+        dds::sub::DataReader&lt;HelloWorldData::Msg&gt; reader(subscriber, topic);
+
+        /* Poll until a message has been read.
+         * It isn't really recommended to do this kind wait in a polling loop.
+         * It's done here just to illustrate the easiest way to get data.
+         * Please take a look at Listeners and WaitSets for much better
+         * solutions, albeit somewhat more elaborate ones. */
+        std::cout &lt;&lt; &quot;=== [Subscriber] Wait for message.&quot; &lt;&lt; std::endl;
+        bool poll = true;
+
+        while (poll) {
+            /* For this example, the reader will return a set of messages (aka
+             * Samples). There are other ways of getting samples from reader.
+             * See the various read() and take() functions that are present. */
+            dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt; samples;
+
+            /* Try taking samples from the reader. */
+            samples = reader.take();
+
+            /* Are samples read? */
+            if (samples.length() &gt; 0) {
+                /* Use an iterator to run over the set of samples. */
+                dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt;::const_iterator sample_iter;
+                for (sample_iter = samples.begin();
+                     sample_iter &lt; samples.end();
+                     ++sample_iter) {
+                    /* Get the message and sample information. */
+                    const HelloWorldData::Msg&amp; msg = sample_iter-&gt;data();
+                    const dds::sub::SampleInfo&amp; info = sample_iter-&gt;info();
+
+                    /* Sometimes a sample is read, only to indicate a data
+                     * state change (which can be found in the info). If
+                     * that's the case, only the key value of the sample
+                     * is set. The other data parts are not.
+                     * Check if this sample has valid data. */
+                    if (info.valid()) {
+                        std::cout &lt;&lt; &quot;=== [Subscriber] Message received:&quot; &lt;&lt; std::endl;
+                        std::cout &lt;&lt; &quot;    userID  : &quot; &lt;&lt; msg.userID() &lt;&lt; std::endl;
+                        std::cout &lt;&lt; &quot;    Message : \&quot;&quot; &lt;&lt; msg.message() &lt;&lt; &quot;\&quot;&quot; &lt;&lt; std::endl;
+
+                        /* Only 1 message is expected in this example. */
+                        poll = false;
+                    }
+                }
+            } else {
+                std::this_thread::sleep_for(std::chrono::milliseconds(20));
+            }
+        }
+    }
+    catch (const dds::core::Exception&amp; e) {
+        std::cerr &lt;&lt; &quot;=== [Subscriber] Exception: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::cout &lt;&lt; &quot;=== [Subscriber] Done.&quot; &lt;&lt; std::endl;
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<p>Within the subscriber code we will be mainly using the DDS ISOCPP API and the <code>HelloWorldData::Msg</code> type. Therefore, the following header files need to included:</p>
+<ul>
+<li>The <strong>dds.hpp</strong> file give access to the DDS APIs,</li>
+<li>The <strong>HelloWorldData_DCPS.hpp</strong> is specific to the data type defined in the IDL.</li>
+</ul>
+<pre><code>#include &quot;dds/dds.hpp&quot;
+#include &quot;HelloWorldData_DCPS.hpp&quot;
+</code></pre>
+<p>At least four dds entities are needed, the domain participant, the topic , the subscriber and the reader.</p>
+<pre><code>dds::domain::DomainParticipant participant(domain::default_id());
+dds::topic::Topic&lt;HelloWorldData::Msg&gt; topic(participant,&quot;ddscxx_helloworld_example&quot;);
+dds::sub::Subscriber subscriber(participant);
+dds::sub::DataReader&lt;HelloWorldData::Msg&gt; reader(subscriber,topic);
+</code></pre>
+<p>The Cyclone DDS-CXX API simplifies and extends the ways in which data can be read or taken. To handle the data some <code>LoanedSamples</code> are declared and created which loans samples from the Service pool. Return of the loan is implicit and managed by scoping:</p>
+<pre><code>dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt; samples;
+dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt;::const_iterator sample_iter;
+</code></pre>
+<p>As the <code>read( )/take()</code> operation may return more the one data sample (in the event that several publishing applications are started simultaneously to write different message instances), an iterator is rather used.</p>
+<pre><code>const::HelloWorldData::Msg&amp; msg;
+const dds::sub::SampleInfo&amp; info;
+</code></pre>
+<p>In DDS data and metadata are propagated together. The samples are a set of the data-samples ( i.e user defined data) and metadata describing the sample state, validity etc ,,, (<code>info</code>). To get the data and its metadata from each of the samples, we can use iterators.</p>
+<pre><code>Try {
+    …
+}
+catch (const dds::core::Exception&amp; e) {
+    std::cerr &lt;&lt; &quot;=== [Subscriber] Exception: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;
+    return EXIT_FAILURE;
+}
+</code></pre>
+<p>The good practice is to surround every key verbs of the DDS APIs with <code>try/catch</code> block to precisely locate issues when they occur. In this example one block is used to facilitate the programming model of the applications and improve their source code readability.</p>
+<pre><code>dds::domain::DomainParticipant participant(domain::default_id());
+</code></pre>
+<p>The dds participant is always attached to a specific dds domain. In the Hello World! example, it is part of the Default_Domain, the one specified in the xml deployment file that you have potentially be created ( i.e the one pointed <code>$CYCLONEDDS_URI</code>), please refers to section 1.6 for further details.</p>
+<p>Subsequently, create a subscriber attached to your participant.</p>
+<pre><code>dds::sub::Subscriber subscriber(participant);
+</code></pre>
+<p>The next step is to create the topic with a given name(<code>ddscxx_helloworld_example</code>)and the predefined data type(<code>HelloWorldData::Msg</code>). Topics with the same data type description and with different names, are considered different topics. This means that readers or writers created for a given topic will not interfere with readers or writers created with another topic even though the same the same data type.</p>
+<pre><code>dds::topic::Topic&lt;HelloWorldData::Msg&gt; topic(participant,&quot;ddscxx_helloworld_example&quot;);
+</code></pre>
+<p>Once the topic is created, we can create and associate to it a data reader.</p>
+<pre><code>dds::sub::DataReader&lt;HelloWorldData::Msg&gt; reader(subscriber, topic);
+</code></pre>
+<p>To modify the Data Reader Default Reliability Qos to Reliable do:</p>
+<pre><code>dds::sub::qos::DataReaderQos drqos = topic.qos() &lt;&lt; dds::core::policy::Reliability::Reliable();
+dds::sub::DataReader&lt;HelloWorldData::Msg&gt; dr(subscriber, topic, drqos);
+</code></pre>
+<p>To retrieve data in your application code from the data reader's cache you can either use pre-allocated</p>
+<p>a buffer to store the data or loaned it from the middleware.</p>
+<p>If you decide to use a pre-allocated buffer to create array/vector like container. If you use the loaned buffer option, you need to be aware that these buffers are actually 'owned' by the middleware, precisely by the DataReader. The Cyclone DDS CXX API allows you also to return of the loans implicit through scoping.</p>
+<p>In our example we are using the loan samples mode (<code>LoanedSamples</code>). <code>Samples</code> are an unbounded sequence of samples; the length of the sequence depends on the amount of data available in the data reader's cache.</p>
+<pre><code>dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt; samples;
+</code></pre>
+<p>At this stage we can attempt to read data by going into a polling loop that will regularly scrutinize and examine the arrival of a message. Samples are removed from the reader's cache when taken with the <code>take()</code>.</p>
+<pre><code>samples = reader.take();
+</code></pre>
+<p>If you choose to read the samples with <code>read()</code>, data remains in the data reader cache. A length() of samples greater the zero indicates that the data reader cache was not empty.</p>
+<pre><code>if (samples.length() &gt; 0)
+</code></pre>
+<p>As sequences are NOT pre-allocated by the user, buffers will be 'loaned' to him by the DataReader.</p>
+<pre><code>dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt;::const_iterator sample_iter;
+for (sample_iter = samples.begin();
+     sample_iter &lt; samples.end();
+     ++sample_iter)
+</code></pre>
+<p>For each individual sample, cast and extract it user defined data (<code>Msg</code>) and metadate (<code>info</code>).</p>
+<pre><code>const HelloWorldData::Msg&amp; msg = sample_iter-&gt;data();
+const dds::sub::SampleInfo&amp; info = sample_iter-&gt;info();
+</code></pre>
+<p>The SampleInfo (<code>info</code>) will tell whether the data we are taking is <em>Valid</em> or <em>Invalid</em>. Valid data means that it contains the payload provided by the publishing application. Invalid data means, that we are rather reading the DDS state of data Instance. The state of a data instance can be for instance <code>DISPOSED</code> by the writer or it is <code>NOT_ALIVE</code> anymore, which could happen for instance the publisher application terminates while the subscriber is still active. In this case the sample will not be considered as Valid, and its sample <code>info.valid()</code> field will be False.</p>
+<pre><code>if (info.valid())
+</code></pre>
+<p>As the sample contains valid data, we can safely display its content.</p>
+<pre><code>std::cout &lt;&lt; &quot;=== [Subscriber] Message received:&quot; &lt;&lt; std::endl;
+std::cout &lt;&lt; &quot;    userID  : &quot; &lt;&lt; msg.userID() &lt;&lt; std::endl;
+std::cout &lt;&lt; &quot;    Message : \&quot;&quot; &lt;&lt; msg.message() &lt;&lt; &quot;\&quot;&quot; &lt;&lt; std::endl;
+</code></pre>
+<p>As we are using the Poll data reading mode, we repeat the above steps every 20 milliseconds.</p>
+<pre><code>else {
+      std::this_thread::sleep_for(std::chrono::milliseconds(20));
+}
+</code></pre>
+<p>This example uses the polling mode to read or take data. Cyclone DDS offers <em>waitSet</em> and <em>Listener</em> mechanism to notify the application that data is available in their cache, which avoid polling the cache at a regular interval. The discretion of these mechanisms is beyond the scope of this document.</p>
+<p>All the entities that are created under the participant, such as the Data Reader Subscriber and Topic, are automatically deleted by middleware through the scoping mechanism.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a rel="prev" href="Helloworld-CXX/dds-cxx-hello-world-business-logic.html" class="mobile-nav-chapters previous" title="Previous chapter">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="Helloworld-CXX/dds-cxx-hello-world-publisher-source-code.html" class="mobile-nav-chapters next" title="Next chapter">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="Helloworld-CXX/dds-cxx-hello-world-business-logic.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Helloworld-CXX/dds-cxx-hello-world-publisher-source-code.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

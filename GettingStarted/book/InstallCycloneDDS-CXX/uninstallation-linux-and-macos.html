@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Linux and macOS - Cyclone Getting Started</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
+
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li class="affix"><a href="./index.html">Introduction</a></li><li><a href="InstallCycloneDDS/index.html"><strong>1.</strong> Installing Eclipse Cyclone DDS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/system-requirements.html"><strong>1.1.</strong> System requirements</a></li><li><a href="InstallCycloneDDS/native-installation-for-linux-and-macos.html"><strong>1.2.</strong> Native Installation for Linux and macOS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/for-application-developers.html"><strong>1.2.1.</strong> For Application Developers</a></li></ul></li><li><a href="InstallCycloneDDS/installation-with-product-installer-for-linux-and-macos.html"><strong>1.3.</strong> Installation with product installer for Linux and macOS</a></li><li><a href="InstallCycloneDDS/native-installation-for-windows.html"><strong>1.4.</strong> Native Installation for Windows</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/for-application-developers-windows.html"><strong>1.4.1.</strong> For Application Developers</a></li></ul></li><li><a href="InstallCycloneDDS/installation-with-product-installer-for-windows.html"><strong>1.5.</strong> Installation with product installer for Windows</a></li><li><a href="InstallCycloneDDS/test-your-installation.html"><strong>1.6.</strong> Test your Installation</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/environnement-variable-updates.html"><strong>1.6.1.</strong> Environnement variable updates</a></li><li><a href="InstallCycloneDDS/running-the-pre-built-example.html"><strong>1.6.2.</strong> Running the pre-built example</a></li></ul></li><li><a href="InstallCycloneDDS/you-want-to-know-more-about-dds.html"><strong>1.7.</strong> You want to know more about DDS?</a></li><li><a href="InstallCycloneDDS/uninstalling-cyclone-dds.html"><strong>1.8.</strong> Uninstalling Cyclone DDS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/uninstallation-for-native-installation.html"><strong>1.8.1.</strong> Uninstallation for Native Installation.md</a></li><li><a href="InstallCycloneDDS/uninstallation-for-the-product-installer.html"><strong>1.8.2.</strong> Uninstallation for the product installer</a></li><li><ul class="section"><li><a href="InstallCycloneDDS/uninstallation-windows.html"><strong>1.8.2.1.</strong> Windows</a></li><li><a href="InstallCycloneDDS/uninstallation-linux-and-macos.html"><strong>1.8.2.2.</strong> Linux and macOS</a></li></ul></li></ul></li></ul></li><li><a href="Build-app/index.html"><strong>2.</strong> Building Cyclone DDS applications</a></li><li><ul class="section"><li><a href="Build-app/building-your-first-example.html"><strong>2.1.</strong> Building Your First Example</a></li><li><a href="Build-app/building-the-helloworld-application-with-cmake.html"><strong>2.2.</strong> Building the HelloWorld! application with CMake</a></li><li><ul class="section"><li><a href="Build-app/building-the-hello-world-example.html"><strong>2.2.1.</strong> Building the Hello World!Example</a></li><li><ul class="section"><li><a href="Build-app/on-linux.html"><strong>2.2.1.1.</strong> on Linux</a></li><li><a href="Build-app/on-windows.html"><strong>2.2.1.2.</strong> on Windows</a></li></ul></li></ul></li></ul></li><li><a href="Helloworld/index.html"><strong>3.</strong> Hello World!, Code anatomy</a></li><li><ul class="section"><li><a href="Helloworld/data-centric-architecture.html"><strong>3.1.</strong> Data-Centric Architecture</a></li><li><a href="Helloworld/keys-steps-to-build-the-hello-world-application.html"><strong>3.2.</strong> Keys steps to build the Hello World! application</a></li><li><ul class="section"><li><a href="Helloworld/hello-world-idl.html"><strong>3.2.1.</strong> Hello World! IDL</a></li><li><a href="Helloworld/the-idl-compiler-generated-files.html"><strong>3.2.2.</strong> The IDL compiler generated files</a></li></ul></li><li><a href="Helloworld/the-hello-world-business-logic.html"><strong>3.3.</strong> The Hello World! Business Logic</a></li><li><ul class="section"><li><a href="Helloworld/hello-world-subscriber-source-code.html"><strong>3.3.1.</strong> Hello World! Subscriber Source Code</a></li><li><a href="Helloworld/hello-world-publisher-source-code.html"><strong>3.3.2.</strong> Hello World! Publisher Source Code</a></li></ul></li></ul></li><li><a href="Benchmarking/index.html"><strong>4.</strong> Benchmarking Tools for Cyclone</a></li><li><ul class="section"><li><a href="Benchmarking/introduction.html"><strong>4.1.</strong> Introduction</a></li><li><a href="Benchmarking/testing-your-network-configuration.html"><strong>4.2.</strong> Testing your network configuration</a></li><li><a href="Benchmarking/measuring-latency.html"><strong>4.3.</strong> Measuring Latency</a></li><li><a href="Benchmarking/measuring-throughput.html"><strong>4.4.</strong> Measuring Throughput</a></li><li><a href="Benchmarking/measuring-throughput-and-latency-in-a-mixed-scenario.html"><strong>4.5.</strong> Measuring Throughput and Latency in a mixed scenario</a></li><li><a href="Benchmarking/additional-options.html"><strong>4.6.</strong> Additional options</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/index.html"><strong>5.</strong> Installing Eclipse Cyclone DDS – CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/system-requirements.html"><strong>5.1.</strong> System requirements</a></li><li><a href="InstallCycloneDDS-CXX/native-installation-for-linux-and-macos.html"><strong>5.2.</strong> Native Installation for Linux and macOS</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/install-idlcxx-compiler.html"><strong>5.2.1.</strong> Install CXX IDL compiler</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-idlcxx.html"><strong>5.2.1.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/packaging.html"><strong>5.2.1.2.</strong> Packaging</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/install-eclipse-cyclone-dds-cxx.html"><strong>5.2.2.</strong> Install Eclipse Cyclone DDS CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-cxx.html"><strong>5.2.2.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/for-application-developers.html"><strong>5.2.2.2.</strong> For Application Developers</a></li></ul></li></ul></li><li><a href="InstallCycloneDDS-CXX/installation-with-product-installer-for-linux-and-macos.html"><strong>5.3.</strong> Installation with product installer for Linux and macOS</a></li><li><a href="InstallCycloneDDS-CXX/native-installation-for-windows.html"><strong>5.4.</strong> Native Installation for Windows</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/install-idlcxx-compiler-windows.html"><strong>5.4.1.</strong> Install CXX IDL compiler</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-idlcxx-windows.html"><strong>5.4.1.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/packaging-windows.html"><strong>5.4.1.2.</strong> Packaging</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/install-eclipse-cyclone-dds-cxx-windows.html"><strong>5.4.2.</strong> Install Eclipse Cyclone DDS CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/building-cxx-windows.html"><strong>5.4.2.1.</strong> Building</a></li><li><a href="InstallCycloneDDS-CXX/for-application-developers-windows.html"><strong>5.4.2.2.</strong> For Application Developers</a></li></ul></li></ul></li><li><a href="InstallCycloneDDS-CXX/installation-with-product-installer-for-windows.html"><strong>5.5.</strong> Installation with product installer for Windows</a></li><li><a href="InstallCycloneDDS-CXX/test-your-cxx-installation-for-native-installation.html"><strong>5.6.</strong> Test your CXX Installation for Native Installation</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/environnement-variable-updates.html"><strong>5.6.1.</strong> Environnement variable updates</a></li><li><a href="InstallCycloneDDS-CXX/running-the-pre-built-example.html"><strong>5.6.2.</strong> Running the pre-built example</a></li></ul></li><li><a href="InstallCycloneDDS-CXX/uninstalling-cyclone-dds-cxx.html"><strong>5.7.</strong> Uninstalling Cyclone DDS-CXX</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/uninstallation-for-native-installation.html"><strong>5.7.1.</strong> Uninstallation for Native Installation</a></li><li><a href="InstallCycloneDDS-CXX/uninstallation-for-the-product-installer.html"><strong>5.7.2.</strong> Uninstallation for the product installer</a></li><li><ul class="section"><li><a href="InstallCycloneDDS-CXX/uninstallation-windows.html"><strong>5.7.2.1.</strong> Windows</a></li><li><a href="InstallCycloneDDS-CXX/uninstallation-linux-and-macos.html" class="active"><strong>5.7.2.2.</strong> Linux and macOS</a></li></ul></li></ul></li></ul></li><li><a href="Build-cxx-app/index.html"><strong>6.</strong> Building Eclipse Cyclone DDS-CXX applications</a></li><li><ul class="section"><li><a href="Build-cxx-app/building-your-first-cyclonedds-cxx-example.html"><strong>6.1.</strong> Building Your First CycloneDDS-CXX example</a></li><li><ul class="section"><li><a href="Build-cxx-app/building-a-cyclonedds-cxx-application-with-cmake.html"><strong>6.1.1.</strong> Building a CycloneDDS-CXX application with CMake</a></li><li><a href="Build-cxx-app/build-the-dds-cxx-hello-world-example.html"><strong>6.1.2.</strong> Build the DDS-CXX Hello World Example</a></li><li><ul class="section"><li><a href="Build-cxx-app/building-the-dds-cxx-hello-world-example-on-linux-and-macos.html"><strong>6.1.2.1.</strong> Building the DDS-CXX Hello World example on Linux and macOS</a></li><li><a href="Build-cxx-app/building-the-dds-cxx-hello-world-example-on-windows.html"><strong>6.1.2.2.</strong> Building the DDS-CXX Hello World example on Windows</a></li></ul></li></ul></li></ul></li><li><a href="Helloworld-CXX/index.html"><strong>7.</strong> DDS-CXX Hello World Code anatomy</a></li><li><ul class="section"><li><a href="Helloworld-CXX/keys-steps-to-build-the-hello-world-application.html"><strong>7.1.</strong> Keys steps to build the Hello World! application</a></li><li><ul class="section"><li><a href="Helloworld-CXX/helloworld-idl.html"><strong>7.1.1.</strong> HelloWorld IDL</a></li><li><a href="Helloworld-CXX/the-idl-compiler-generated-files.html"><strong>7.1.2.</strong> The IDL compiler generated files</a></li></ul></li><li><a href="Helloworld-CXX/dds-cxx-hello-world-business-logic.html"><strong>7.2.</strong> DDS-CXX Hello World Business Logic</a></li><li><ul class="section"><li><a href="Helloworld-CXX/dds-cxx-hello-world-subscriber-source-code.html"><strong>7.2.1.</strong> DDS-CXX Hello World Subscriber Source Code</a></li><li><a href="Helloworld-CXX/dds-cxx-hello-world-publisher-source-code.html"><strong>7.2.2.</strong> DDS-CXX Hello World Publisher Source Code</a></li></ul></li></ul></li><li><a href="Appendix/CycloneDDS-contribute/index.html"><strong>8.</strong> Appendix I Contributing to Eclipse Cyclone DDS</a></li><li><ul class="section"><li><a href="Appendix/CycloneDDS-contribute/linux-and-macos.html"><strong>8.1.</strong> Linux and macOS</a></li><li><a href="Appendix/CycloneDDS-contribute/windows.html"><strong>8.2.</strong> Windows</a></li></ul></li><li><a href="Appendix/CycloneDDS-CXX-contribute/index.html"><strong>9.</strong> Appendix II Contributing to Eclipse Cyclone DDS-CXX</a></li><li><ul class="section"><li><a href="Appendix/CycloneDDS-CXX-contribute/linux-and-macos.html"><strong>9.1.</strong> Linux and macOS</a></li><li><a href="Appendix/CycloneDDS-CXX-contribute/windows.html"><strong>9.2.</strong> Windows</a></li></ul></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page" tabindex="-1">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars" title="Toggle sidebar"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush" title="Change theme"></i>
+                    </div>
+
+                    <h1 class="menu-title">Cyclone Getting Started</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="InstallCycloneDDS-CXX/uninstallation-linux-and-macos.html#linux-and-macos" id="linux-and-macos"><h2>Linux and macOS</h2></a>
+<p>TBD.</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+                    <a rel="prev" href="InstallCycloneDDS-CXX/uninstallation-windows.html" class="mobile-nav-chapters previous" title="Previous chapter">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="Build-cxx-app/index.html" class="mobile-nav-chapters next" title="Next chapter">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+
+            </div>
+
+            
+                <a href="InstallCycloneDDS-CXX/uninstallation-windows.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            
+
+            
+                <a href="Build-cxx-app/index.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+        
+
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </body>
+</html>

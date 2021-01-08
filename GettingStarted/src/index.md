@@ -9,41 +9,41 @@ The first chapters detail the installation and build process of Cyclone Core, in
 
 ### Chapters
 
-**[Installing Eclipse Cyclone DDS](InstallCycloneDDS/index.md)**
+**[Installing Eclipse Cyclone DDS](InstallCycloneDDS/index.html)**
 
 To get started with Cyclone DDS, first install the Cyclone DDS.
 
 
-**[Building Cyclone DDS applications](Build-app/index.md)**
+**[Building Cyclone DDS applications](Build-app/index.html)**
 
-This chapter will give you information on how to build an application using Cyclone DDS.
-
-
-**[Hello World!, Code anatomy](Helloworld/index.md)**
-
-This code anatomy will give you details on how to write an application using Cyclone DDS.
+This chapter will give you information on how to build an application in Cyclone DDS.
 
 
-**[Benchmarking Tools for Cyclone](Benchmarking/index.md)**
+**[Hello World!, Code anatomy](Helloworld/index.html)**
 
-This chapter gives information on how to measure data using the tool provided in Cyclone DDS.
+This chapter introduces the key concept of DDS and details the structural code of a simple system.
 
 
-**[Installing Eclipse Cyclone DDS – CXX](InstallCycloneDDS-CXX/index.md)**
+**[Benchmarking Tools for Cyclone](Benchmarking/index.html)**
+
+This chapter gives information on how to test your configuration and measure data using the tool provided in Cyclone DDS.
+
+
+**[Installing Eclipse Cyclone DDS – CXX](InstallCycloneDDS-CXX/index.html)**
 
 To use Cyclone DDS in C++, you can install the C++ support packages for Cyclone DDS.
 
 
-**[Building Eclipse Cyclone DDS-CXX applications](Build-cxx-app/index.md)**
+**[Building Eclipse Cyclone DDS-CXX applications](Build-cxx-app/index.html)**
 
-This chapter will give you information on how to build an application using Cyclone DDS with C++ bindings.
+This chapter will give you information on how to build an application using the C++ bindings in Cyclone DDS.
 
 
-**[DDS-CXX Hello World Code anatomy](Helloworld-CXX/index.md)**
+**[DDS-CXX Hello World Code anatomy](Helloworld-CXX/index.html)**
 
 This code anatomy will give you details on how to write an application in C++ using Cyclone DDS C++ bindings.
 
 
 **Appendices:**
-- [Appendix I Contributing to Eclipse Cyclone DDS](Appendix/CycloneDDS-contribute/index.md)
-- [Appendix II Contributing to Eclipse Cyclone DDS-CXX](Appendix/CycloneDDS-CXX-contribute/index.md)
+- [Appendix I Contributing to Eclipse Cyclone DDS](Appendix/CycloneDDS-contribute/index.html)
+- [Appendix II Contributing to Eclipse Cyclone DDS-CXX](Appendix/CycloneDDS-CXX-contribute/index.html)
