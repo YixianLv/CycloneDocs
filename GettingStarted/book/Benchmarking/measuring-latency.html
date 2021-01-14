@@ -87,21 +87,21 @@
 
                 <div id="content" class="content">
                     <a class="header" href="Benchmarking/measuring-latency.html#measuring-latency" id="measuring-latency"><h2>Measuring Latency</h2></a>
-<p>To measure latency between two different applications, you need to run two instances of the _ddsperf_tool and instruct one of them to endorse the role of a <em>sender</em> that sends a given amount of data (a sequence of octets) at a given rate and the other instance will take the role of <em>receiver</em> that sends back the same amount of data to the sender in a Ping-Pong scenario. The sending action is triggered by the <strong>Ping</strong> option. The receiving behavior is triggered by the <strong>Pong</strong> action. The sender measures the roundtrip time and computes the latency as the half of the roundtrip time.</p>
+<p>To measure latency between two different applications, you need to run two instances of the <em>ddsperf</em> tool and instruct one of them to endorse the role of a <em>sender</em> that sends a given amount of data (a sequence of octets) at a given rate and the other instance will take the role of <em>receiver</em> that sends back the same amount of data to the sender in a Ping-Pong scenario. The sending action is triggered by the <strong>Ping</strong> option. The receiving behavior is triggered by the <strong>Pong</strong> action. The sender measures the roundtrip time and computes the latency as the half of the roundtrip time.</p>
 <p>The Ping Pong scenario avoids clock desynchronization issue that might occur between two machines that do not share accurately the same perception of the time in the network.</p>
 <div align=center> <img src="figs/4.3-1.png"></div>
 <p>To differential the two operational modes, the _ddsperf_tool can operate either in a <strong>Ping mode</strong> or in a <strong>Pong mode</strong>.</p>
-<p>To run this scenario, open 2 terminals (e.g on Linux like OSs), navigate to the directory where _ddsperf_is located then write the following command in one of the terminals:</p>
+<p>To run this scenario, open 2 terminals (e.g on Linux like OSs), navigate to the directory where <em>ddsperf</em> is located then write the following command in one of the terminals:</p>
 <pre><code>./ddsperf ping
 </code></pre>
 <p>Input this command in another terminal:</p>
 <pre><code>./ddsperf pong
 </code></pre>
-<p>This basic scenario performs a simple latency test with all the default values. You may customize your tests sceratio by changing the following options.</p>
+<p>This basic scenario performs a simple latency test with all the default values. You may customize your test scenario by changing the following options.</p>
 <p>In <strong>Ping mode</strong> you can specify:</p>
 <ul>
 <li>
-<p>The <em><strong>Rate</strong></em> and frequency at which data is written. This is specified through the [R[Hz]] option. The default rate is &quot;as fast as possible&quot;. In <strong>ping</strong> mode, it always send a new ping as soon as it gets a pong;</p>
+<p>The <em><strong>Rate</strong></em> and frequency at which data is written. This is specified through the [R[Hz]] option. The default rate is &quot;as fast as possible&quot;. In <strong>ping</strong> mode, it always sends a new ping as soon as it gets a pong;</p>
 </li>
 <li>
 <p>The <em><strong>Size</strong></em> of the data that will be exchanged. This is specified through the [Size S] option. Using the default built-in topic, 12 bytes (an integer key, an integer sequence number, and an empty sequence of bytes). are sent every time. The size is &quot;as small as possible&quot; by default, depending on the size of the topic it defaults to;</p>
@@ -122,7 +122,7 @@
 <p>The output of the <em>ddsperf</em> tool is as shown below:</p>
 <ol>
 <li>
-<p>The output for the Ping application indicates mainly:</p>
+<p>The output for the <strong>Ping</strong> application indicates mainly:</p>
 </li>
 </ol>
 <ul>
@@ -133,9 +133,9 @@
 <li>As well as the latency at 50%, 90% or 99% of the time.</li>
 </ul>
 <div align=center> <img src="figs/4.3-2.png"></div>
-<ol>
+<ol start="2">
 <li>
-<p>The output for the Pong application:</p>
+<p>The output for the <strong>Pong</strong> application:</p>
 </li>
 </ol>
 <ul>

@@ -92,7 +92,7 @@
 $ cmake -G &amp;quot;&lt;generator-name&gt;&amp;quot; -DCMAKE_INSTALL_PREFIX=&lt;install-location&gt; ..
 $ cmake --build .
 </code></pre>
-<p><strong>Note:</strong> You should replace <code>&lt;install-location&gt;</code> with the directory under which you like to install Cyclone DDS and <code>&lt;generator-name&gt;</code> by one of the ways CMake <a href="https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html">generators</a> offer for generating build files. For example, &quot;Visual Studio 15 2017 Win64&quot; target a 64-bit build using Visual Studio 2017, and the <code>&lt;install-location&gt;</code> can be under the <code>build\install</code> directory. With both the <code>&quot;&lt;generator-name&gt;&quot;</code> and <code>&quot;&lt;install-location&gt;&quot;</code> specified as the example, the command look like:</p>
+<p><strong>Note:</strong> You should replace <code>&lt;install-location&gt;</code> with the directory under which you like to install Cyclone DDS and <code>&lt;generator-name&gt;</code> by one of the ways CMake <a href="https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html">generators</a> offer for generating build files. For example, &quot;Visual Studio 15 2017 Win64&quot; target a 64-bit build using Visual Studio 2017, and the <code>&lt;install-location&gt;</code> can be under the <code>build\install</code> directory. With both the <code>&quot;&lt;generator-name&gt;&quot;</code> and <code>&quot;&lt;install-location&gt;&quot;</code> specified as the example, the command looks like this:</p>
 <pre><code>$ cmake -G &quot;Visual Studio 15 2017 Win64&quot; -DCMAKE_INSTALL_PREFIX=install ..
 </code></pre>
 <p>To install it after a successful build, do:</p>

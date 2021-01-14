@@ -176,7 +176,7 @@ int main() {
     return EXIT_SUCCESS;
 }
 </code></pre>
-<p>Within the subscriber code we will be mainly using the DDS ISOCPP API and the <code>HelloWorldData::Msg</code> type. Therefore, the following header files need to included:</p>
+<p>Within the subscriber code, we will be mainly using the DDS ISOCPP API and the <code>HelloWorldData::Msg</code> type. Therefore, the following header files need to included:</p>
 <ul>
 <li>The <strong>dds.hpp</strong> file give access to the DDS APIs,</li>
 <li>The <strong>HelloWorldData_DCPS.hpp</strong> is specific to the data type defined in the IDL.</li>
@@ -190,7 +190,7 @@ dds::topic::Topic&lt;HelloWorldData::Msg&gt; topic(participant,&quot;ddscxx_hell
 dds::sub::Subscriber subscriber(participant);
 dds::sub::DataReader&lt;HelloWorldData::Msg&gt; reader(subscriber,topic);
 </code></pre>
-<p>The Cyclone DDS-CXX API simplifies and extends the ways in which data can be read or taken. To handle the data some <code>LoanedSamples</code> are declared and created which loans samples from the Service pool. Return of the loan is implicit and managed by scoping:</p>
+<p>The Cyclone DDS-CXX API simplifies and extends how data can be read or taken. To handle the data some <code>LoanedSamples</code> are declared and created which loans samples from the Service pool. Return of the loan is implicit and managed by scoping:</p>
 <pre><code>dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt; samples;
 dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt;::const_iterator sample_iter;
 </code></pre>
@@ -214,7 +214,7 @@ catch (const dds::core::Exception&amp; e) {
 <p>Subsequently, create a subscriber attached to your participant.</p>
 <pre><code>dds::sub::Subscriber subscriber(participant);
 </code></pre>
-<p>The next step is to create the topic with a given name(<code>ddscxx_helloworld_example</code>)and the predefined data type(<code>HelloWorldData::Msg</code>). Topics with the same data type description and with different names, are considered different topics. This means that readers or writers created for a given topic will not interfere with readers or writers created with another topic even though the same the same data type.</p>
+<p>The next step is to create the topic with a given name(<code>ddscxx_helloworld_example</code>)and the predefined data type(<code>HelloWorldData::Msg</code>). Topics with the same data type description and with different names are considered different topics. This means that readers or writers created for a given topic will not interfere with readers or writers created with another topic even though the same data type.</p>
 <pre><code>dds::topic::Topic&lt;HelloWorldData::Msg&gt; topic(participant,&quot;ddscxx_helloworld_example&quot;);
 </code></pre>
 <p>Once the topic is created, we can create and associate to it a data reader.</p>
@@ -224,13 +224,12 @@ catch (const dds::core::Exception&amp; e) {
 <pre><code>dds::sub::qos::DataReaderQos drqos = topic.qos() &lt;&lt; dds::core::policy::Reliability::Reliable();
 dds::sub::DataReader&lt;HelloWorldData::Msg&gt; dr(subscriber, topic, drqos);
 </code></pre>
-<p>To retrieve data in your application code from the data reader's cache you can either use pre-allocated</p>
-<p>a buffer to store the data or loaned it from the middleware.</p>
+<p>To retrieve data in your application code from the data reader's cache you can either use pre-allocated a buffer to store the data or loaned it from the middleware.</p>
 <p>If you decide to use a pre-allocated buffer to create array/vector like container. If you use the loaned buffer option, you need to be aware that these buffers are actually 'owned' by the middleware, precisely by the DataReader. The Cyclone DDS CXX API allows you also to return of the loans implicit through scoping.</p>
 <p>In our example we are using the loan samples mode (<code>LoanedSamples</code>). <code>Samples</code> are an unbounded sequence of samples; the length of the sequence depends on the amount of data available in the data reader's cache.</p>
 <pre><code>dds::sub::LoanedSamples&lt;HelloWorldData::Msg&gt; samples;
 </code></pre>
-<p>At this stage we can attempt to read data by going into a polling loop that will regularly scrutinize and examine the arrival of a message. Samples are removed from the reader's cache when taken with the <code>take()</code>.</p>
+<p>At this stage, we can attempt to read data by going into a polling loop that will regularly scrutinize and examine the arrival of a message. Samples are removed from the reader's cache when taken with the <code>take()</code>.</p>
 <pre><code>samples = reader.take();
 </code></pre>
 <p>If you choose to read the samples with <code>read()</code>, data remains in the data reader cache. A length() of samples greater the zero indicates that the data reader cache was not empty.</p>
@@ -242,7 +241,7 @@ for (sample_iter = samples.begin();
      sample_iter &lt; samples.end();
      ++sample_iter)
 </code></pre>
-<p>For each individual sample, cast and extract it user defined data (<code>Msg</code>) and metadate (<code>info</code>).</p>
+<p>For each individual sample, cast and extract its user defined data (<code>Msg</code>) and metadate (<code>info</code>).</p>
 <pre><code>const HelloWorldData::Msg&amp; msg = sample_iter-&gt;data();
 const dds::sub::SampleInfo&amp; info = sample_iter-&gt;info();
 </code></pre>
@@ -259,7 +258,7 @@ std::cout &lt;&lt; &quot;    Message : \&quot;&quot; &lt;&lt; msg.message() &lt;
       std::this_thread::sleep_for(std::chrono::milliseconds(20));
 }
 </code></pre>
-<p>This example uses the polling mode to read or take data. Cyclone DDS offers <em>waitSet</em> and <em>Listener</em> mechanism to notify the application that data is available in their cache, which avoid polling the cache at a regular interval. The discretion of these mechanisms is beyond the scope of this document.</p>
+<p>This example uses the polling mode to read or take data. Cyclone DDS offers <em>waitSet</em> and <em>Listener</em> mechanism to notify the application that data is available in their cache, which avoids polling the cache at a regular interval. The discretion of these mechanisms is beyond the scope of this document.</p>
 <p>All the entities that are created under the participant, such as the Data Reader Subscriber and Topic, are automatically deleted by middleware through the scoping mechanism.</p>
 
                 </div>

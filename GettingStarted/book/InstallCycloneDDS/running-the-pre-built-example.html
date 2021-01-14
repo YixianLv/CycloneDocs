@@ -94,18 +94,18 @@
 </ul>
 <p>The <em>Hello World!</em> application is located in the <code>&lt;cyclonedds-directory&gt;\build\bin\Debug</code> directory in Windows, and in <code>&lt;cyclonedds-directory&gt;/build/bin</code> in Linux.</p>
 <p>To run the example application, you can open two console windows and navigate to the appropriate directory in both console windows. Run the HelloworldSubscriber in one of the console windows by typing the following command:</p>
-<p>  <strong>Windows</strong> HelloworldSubscriber.exe</p>
-<p>  <strong>Linux</strong> ./HelloworldSubscriber</p>
+<p>  <strong>Windows:</strong> HelloworldSubscriber.exe</p>
+<p>  <strong>Linux:</strong> ./HelloworldSubscriber</p>
 <p>and the HelloworldPublisher in the other console window by typing:</p>
-<p>  <strong>Windows</strong> HelloworldPublisher.exe</p>
-<p>  <strong>Linux</strong> ./HelloworldPublisher</p>
+<p>  <strong>Windows:</strong> HelloworldPublisher.exe</p>
+<p>  <strong>Linux:</strong> ./HelloworldPublisher</p>
 <p>The output HelloworldPublisher is captured in the screenshot below</p>
 <div align=center> <img src="figs/1.6.2-1.png"></div>
 <p>while the HelloworldSubscriber will be looking like this:</p>
 <div align=center> <img src="figs/1.6.2-2.png"></div>
-<p>Note that Cyclone's default behavior is to pick up automatically the first network interface card available on your machine and will use it to exchange the hello world message. Assure that your publisher and subscriber applications are on the same network, selecting the right interface card. This is one of the most common issue on machine configurations with multiple network interface cards.</p>
+<p>Note that Cyclone's default behavior is to pick up automatically the first network interface card available on your machine and will use it to exchange the hello world message. Assure that your publisher and subscriber applications are on the same network, selecting the right interface card. This is one of the most common issues on machine configurations with multiple network interface cards.</p>
 <p>This default behavior can be overridden by updating the property <code>//CycloneDDS/Domain/General/</code></p>
-<p><code>NetworkInterfaceAddress</code> in a deployment file (e.g <code>cyclonedds.xml</code>) that you have typically have to create and point to it through an OS environment variable named CYCLONEDDS_URI. More information on this topic can be found in the <a href="https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/docs/manual/options.md">github repository</a> and the configuration section on https://github.com/eclipse-cyclonedds/cyclonedds.</p>
+<p><code>NetworkInterfaceAddress</code> in a deployment file (e.g <code>cyclonedds.xml</code>) that you have typically had to create and point to it through an OS environment variable named CYCLONEDDS_URI. More information on this topic can be found in the <a href="https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/docs/manual/options.md">github repository</a> and the configuration section on https://github.com/eclipse-cyclonedds/cyclonedds.</p>
 
                 </div>
 

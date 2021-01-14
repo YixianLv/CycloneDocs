@@ -87,8 +87,8 @@
 
                 <div id="content" class="content">
                     <a class="header" href="InstallCycloneDDS-CXX/packaging-windows.html#packaging" id="packaging"><h3>Packaging</h3></a>
-<p>If you like to package the product, then the config and build step be a bit different than the build process described above.</p>
-<p>When packing, the <code>-DCMAKE_INSTALL_PREFIX=&lt;install-location&gt;</code><sup class="footnote-reference"><a href="InstallCycloneDDS-CXX/packaging-windows.html#1">1</a></sup> option should be added to the configuration, and the <code>&lt;install-location&gt;</code> be the directory which you like to install the IDL compiler.</p>
+<p>If you want to package the product, then the config and build step will be a bit different than the build process described above.</p>
+<p>When packing, the <code>-DCMAKE_INSTALL_PREFIX=&lt;install-location&gt;</code><sup class="footnote-reference"><a href="InstallCycloneDDS-CXX/packaging-windows.html#1">1</a></sup> option should be added to the configuration, and the <code>&lt;install-location&gt;</code> be the directory which the IDL compiler is installed.</p>
 <p>During the build step, you have to specify that you want to build the install target as well.</p>
 <p>The build process should be like:</p>
 <pre><code>$ mkdir build

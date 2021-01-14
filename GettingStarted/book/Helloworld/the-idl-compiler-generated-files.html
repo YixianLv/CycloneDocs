@@ -94,7 +94,7 @@
 <p><strong>On Windows</strong> : Use the <code>HelloWorldType</code> project within the HelloWorld solution.</p>
 <p><strong>On Linux/MacOS</strong> : Use The <code>make datatype</code> command.</p>
 <p>This results in new <strong>HelloWorldData.c</strong> and <strong>HelloWorldData.h</strong> files that need to be compiled and their associated object file linked with the Hello <em>World!</em> publisher and subscriber application business logic. When using the Cyclone provided CMake project, this step is done automatically.</p>
-<p>As described earlier, the IDL compiler generates one source and one header files. The header file (<strong>HelloWorldData.h</strong>) contains the data type of the messages that are shared. While the source file has no direct use form the application developer's perspective.</p>
+<p>As described earlier, the IDL compiler generates one source and one header files. The header file (<strong>HelloWorldData.h</strong>) contains the data type of the messages that are shared. While the source file has no direct use from the application developer's perspective.</p>
 <p><strong>HelloWorldData.h</strong> needs to be included by the application code as it contains the actual message type and contains helper macros to allocate and free memory space for the <code>HelloWorldData_MSG</code> type.</p>
 <pre><code>typedef struct HelloWorldData_Msg
 {
@@ -106,7 +106,7 @@
 <pre><code>HelloWorldData_Msg_alloc()
 HelloWorldData_Msg_free(d,o)
 </code></pre>
-<p>The header file contains an extern variable that describes the data type to the DDS middleware as well. This variable needs to be used by application when creating the topic.</p>
+<p>The header file contains an extern variable that describes the data type to the DDS middleware as well. This variable needs to be used by the application when creating the topic.</p>
 <pre><code>HelloWorldData_Msg_desc
 </code></pre>
 

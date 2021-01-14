@@ -87,7 +87,7 @@
 
                 <div id="content" class="content">
                     <a class="header" href="Helloworld-CXX/dds-cxx-hello-world-publisher-source-code.html#dds-cxx-hello-world-publisher-source-code" id="dds-cxx-hello-world-publisher-source-code"><h2>DDS-CXX <em>Hello World</em> Publisher Source Code</h2></a>
-<p>The <strong>Publisher.cpp</strong> contains the source that will write a <em>Hello World</em> message. From the DDS perspective, the publisher application code is almost symmetric to the subscriber one, except that you need to create respectively a Publisher and Data Writer instead of a Subscriber and Data Reader. To assure data is written only when Cyclone DDS discovers at least a matching reader, a synchronization statement is added to main thread. Synchronizing the main thread till a reader is discovered assures we can start the publisher or subscriber program in any order.</p>
+<p>The <strong>Publisher.cpp</strong> contains the source that will write a <em>Hello World</em> message. From the DDS perspective, the publisher application code is almost symmetric to the subscriber one, except that you need to create respectively a Publisher and Data Writer instead of a Subscriber and Data Reader. To assure data is written only when Cyclone DDS discovers at least a matching reader, a synchronization statement is added to the main thread. Synchronizing the main thread till a reader is discovered assures we can start the publisher or subscriber program in any order.</p>
 <pre><code>#include &lt;cstdlib&gt;
 #include &lt;iostream&gt;
 #include &lt;chrono&gt;
@@ -170,7 +170,7 @@ catch (const dds::core::Exception&amp; e) {
     return EXIT_FAILURE;
 }
 </code></pre>
-<p>Like with the reader in <strong>subscriber.cpp</strong>, we need a participant, a topic and a publisher to be able to create a writer. We also need to use the same topic name as the one specified in the subscriber.cpp.</p>
+<p>Like with the reader in <strong>subscriber.cpp</strong>, we need a participant, a topic, and a publisher to be able to create a writer. We also need to use the same topic name as the one specified in the subscriber.cpp.</p>
 <pre><code>dds::domain::DomainParticipant participant(domain::default_id());
 dds::topic::Topic&lt;HelloWorldData::Msg&gt; topic(participant, &quot;ddscxx_helloworld_example&quot;);
 dds::pub::Publisher publisher(participant);
@@ -190,7 +190,7 @@ dds::sub::DataWriter&lt;HelloWorldData::Msg&gt; dr(publisher, topic, dwqos);
 </ol>
 <pre><code>dds::pub::DataWriter&lt;HelloWorldData::Msg&gt; writer(publisher, topic);
 </code></pre>
-<p>At regular interval we get the status change and for a matching publication. In between, the writing thread sleeps for 20 milliseconds.</p>
+<p>At regular intervals, we get the status change and for a matching publication. In between, the writing thread sleeps for 20 milliseconds.</p>
 <pre><code>while (writer.publication_matched_status().current_count() == 0) {
       std::this_thread::sleep_for(std::chrono::milliseconds(20));
 }
@@ -201,7 +201,7 @@ dds::sub::DataWriter&lt;HelloWorldData::Msg&gt; dr(publisher, topic, dwqos);
 <p>Then we can send the data instance of the keyed message.</p>
 <pre><code>writer.write(msg);
 </code></pre>
-<p>After writing the data to the writer, the <em>DDS-CXX Hello World</em> example check if there still have matching subscriber(s) available. If there is matching subscriber(s), the example waits for 50ms and start publishing the data again. If no matching subscriber is found, then the publisher program be ended.</p>
+<p>After writing the data to the writer, the <em>DDS-CXX Hello World</em> example check if there still have matching subscriber(s) available. If there is a matching subscriber(s), the example waits for 50ms and start publishing the data again. If no matching subscriber is found, then the publisher program is ended.</p>
 <pre><code>return EXIT_SUCCESS;
 </code></pre>
 <p>Through scoping, all the entities such as topic, writer … etc are deleted automatically.</p>
